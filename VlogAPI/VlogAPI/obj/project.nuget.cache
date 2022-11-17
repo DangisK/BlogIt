@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "99M24Mp+Qravw0ryADfJ2a9ng2r2H/1QAisEaBK43KsITh1iE9kGg8NiUrd9UA3Ams14nArizWLAic5/Fk/csQ==",
+  "dgSpecHash": "1/ugAht3Y125UdoAfnwDcwP0t5/isUzg7VM+QOWQ8GqDLsssIMBlwF6WiJibjxQjI0vuCwjfNf60EhKwtm5bAg==",
   "success": true,
   "projectFilePath": "D:\\OneDrive2\\OneDrive - Kaunas University of Technology\\4. Ketvirti metai\\Saityno taikomųjų programų projektavimas\\VlogAPI\\VlogAPI\\VlogAPI.csproj",
   "expectedPackageFiles": [
@@ -62,6 +62,8 @@
     "C:\\Users\\Dangis\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Dangis\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Dangis\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Dangis\\.nuget\\packages\\npgsql\\6.0.7\\npgsql.6.0.7.nupkg.sha512",
+    "C:\\Users\\Dangis\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.7\\npgsql.entityframeworkcore.postgresql.6.0.7.nupkg.sha512",
     "C:\\Users\\Dangis\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\Dangis\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\Dangis\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

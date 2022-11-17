@@ -11,10 +11,16 @@ namespace VlogAPI.Data
         public DbSet<Post>? Posts { get; set; }
         public DbSet<Comment>? Comments { get; set; }
         public DbSet<Like>? Likes { get; set; }
+        private readonly IConfiguration _configuration;
+
+        public VlogDbContext(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=VlogDb");
+            optionsBuilder.UseNpgsql(_configuration.GetValue<string>("PostgreSQLConnectionString"));
         }
     }
 }
