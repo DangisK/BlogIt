@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAb8N+nlgSdkmHe2vyXjYgOQAAAAACAAAAAAAQZgAAAAEAACAAAACtkED0qkOYCrRYh2p6LY+8O6qeO0qfOICaoRpkAF6pIQAAAAAOgAAAAAIAACAAAADKloBWLWJQI17NSlBNMnrL0VTF10a6CvUjV1pJDiB5r4AAAACbD5GYCMQQELoQRa/yy7ApAU/Z9sdfd33qQuvilf3/hFQGQEHl10ctgHDkNsOcrpI6bG+maHOBkJsp8fL8A9/FDuj/ELhsSZcR84Wb+OSQY3A9YGr70mAMY2gfSJdL/ioK2OXtPEO6AF0xInPeDiKsUCVRhPyLBRwOtGQpC2E75kAAAADpM5wGjb32S1ErJiTOEN7bI2hiY19FgCIDz+2t4E8fHpn3MSV0ofWmFtPSUdLswDwFOQ+RpXt24a04c7MYCcSS</EncryptedPassword>
+    <History>True|2022-11-17T16:51:10.4007436Z;True|2022-11-17T18:48:42.7650468+02:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="VlogAPI.Data.VlogDbContext">
+      <Value>Data Source=tcp:vlogapidbserver.database.windows.net,1433%3bInitial Catalog=VlogAPI_db%3bUser Id=dankaz%40vlogapidbserver%3bPassword=!Dangis3264</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

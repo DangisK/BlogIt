@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="VlogAPIdankaz" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\OneDrive2\\OneDrive\ -\ Kaunas\ University\ of\ Technology\\4\.\ Ketvirti\ metai\\Saityno\ taikomųjų\ programų\ projektavimas\\VlogAPI\\VlogAPI\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="VlogAPI.Data.VlogDbContext" description="" value="Data Source=tcp:vlogapidbserver.database.windows.net,1433;Initial Catalog=VlogAPI_db;User Id=dankaz@vlogapidbserver;Password=!Dangis3264" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^D:\\OneDrive2\\OneDrive\ -\ Kaunas\ University\ of\ Technology\\4\.\ Ketvirti\ metai\\Saityno\ taikomųjų\ programų\ projektavimas\\VlogAPI\\VlogAPI\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\VlogAPI\.Data\.VlogDbContext\.sql$" />
+  </parameter>
+</parameters>

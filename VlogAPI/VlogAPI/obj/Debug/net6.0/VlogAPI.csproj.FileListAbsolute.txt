@@ -138,3 +138,8 @@ D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityn
 D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\VlogAPI.pdb
 D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\VlogAPI.genruntimeconfig.cache
 D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\ref\VlogAPI.dll
+D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.VlogAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.VlogAPI.props
+D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.VlogAPI.props
+D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.VlogAPI.props
+D:\OneDrive2\OneDrive - Kaunas University of Technology\4. Ketvirti metai\Saityno taikomųjų programų projektavimas\VlogAPI\VlogAPI\obj\Debug\net6.0\staticwebassets.pack.json
