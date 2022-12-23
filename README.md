@@ -48,3 +48,4 @@ vartotojo įrenginio naudojant *HTTP* protokolą.
 
 ![api](https://user-images.githubusercontent.com/62296041/197076248-6162695b-9ead-496c-a6a3-fff4a7238648.png)
 
+Likęs svetainės aprašymas patalpintas .pdf faile.
