@@ -19,27 +19,22 @@ pilną funkcionalumą, reikėtų paskyrą susikurti. Tai suteiktų galimybę kur
 ### Funkciniai reikalavimai
 
 #### Neregistruotas sistemos naudotojas galės:
-1. Prisijungti prie svetainės,
-2. Peržiūrėti kitų vartotojų blogus,
-3. Matyti komentarus ir reakcijas į juos,
-4. Matyti vartotojų sąrašą.
+1. Prisijungti prie svetainės, todėl bus norima, kad naudotojas prisijungtų.
 
 #### Registruotas naudotojas galės:
 1. Atsijungti nuo svetainės,
 2. Sukurti blogą:
   a. Suteikti paraštę,
   b. Aprašyti pasirinktą temą.
-3. Regaduoti blogą,
-4. Šalinti blogą,
-5. Komentuoti po savo ir kitų blogais,
-6. Paspausti patinka ar nepatinka ant komentaro,
-7. Keisti paskyros nustatymus.
+3.	Regaduoti savo blogą ar jį pašalinti,
+4.	Komentuoti po savo ir kitų blogais,
+5.	Keisti savo komentus ar juos šalinti,
+6.	Paspausti „patinka“ arba „nepatinka“ ant komentarų,
+7.	Pasikeisti iš tamsaus režimo į šviesų arba atvirkščiai.
 
 #### Administratorius galės:
-1. Matyti vartotojų sąrašą,
-2. Peržiūrėti vartotojų blogus,
-3. Šalinti blogus,
-4. Šalinti vartotojus.
+1.	Tą patį, ką gali bet kuris registruotas naudotojas,
+2.	Šalinti bei keisti visų vartotojų blogus, komentarus.  
 
 ## Sistemos architektūra
 
