@@ -1,3 +1,6 @@
+Svetainė pasiekiama adresu:
+https://blogit-e6ho.onrender.com
+
 # BlogIt
 Blogų kūrimo svetainė, skirta T120B165 Saityno taikomųjų programų projektavimo modulio laboratoriniams realizuoti. 
 
