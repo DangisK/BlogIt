@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.JsonWebTokens;
 using System.Security.Claims;
 using VlogAPI.Auth.Model;
@@ -27,41 +30,46 @@ namespace VlogAPI.Controllers
         private readonly ILikesRepository likesRepository;
         private readonly IMapper mapper;
         private readonly IAuthorizationService _authorizationService;
+        private readonly UserManager<VlogUser> _userManager;
 
-        public PostsController(IPostsRepository postsRepository, IMapper mapper, ICommentsRepository commentsRepository, ILikesRepository likesRepository, IAuthorizationService _authorizationService)
+        public PostsController(IPostsRepository postsRepository, IMapper mapper, ICommentsRepository commentsRepository, ILikesRepository likesRepository, IAuthorizationService _authorizationService, UserManager<VlogUser> userManager)
         {
             this.postsRepository = postsRepository;
             this.commentsRepository = commentsRepository;
             this.likesRepository = likesRepository;
             this.mapper = mapper;
             this._authorizationService = _authorizationService;
+            this._userManager = userManager;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<PostDTO>> GetMany()
+        [Authorize(Roles = VlogRoles.VlogUser)]
+        public async Task<ActionResult<IEnumerable<Post>>> GetMany()
         {
             var posts = await postsRepository.GetManyAsync();
 
-            return posts.Select(post => mapper.Map<PostDTO>(post));
+            var postsDTOs = posts.Select(post => new PostDTO(post.Id, post.Name, post.Body, post.CreationDate, _userManager.Users.FirstOrDefault(user => user.Id == post.UserId)?.NormalizedUserName, _userManager.Users.FirstOrDefault(user => user.Id == post.UserId)?.Id));
+
+            return Ok(postsDTOs);
+            //return Ok(posts.Select(post => mapper.Map<PostDTO>(post)));
         }
 
         // api/posts/{postId}
         [HttpGet("{postId}", Name = "GetPost")]
+        [Authorize(Roles = VlogRoles.VlogUser)]
         public async Task<IActionResult> GetOne(int postId)
         {
             var post = await postsRepository.GetPostAsync(postId);
-
-            // 404
             if (post == null) return NotFound();
 
-            //var links = CreateLinksForPost(postId);
+            var user = _userManager.Users.FirstOrDefault(user => user.Id == User.FindFirstValue(JwtRegisteredClaimNames.Sub));
+            var normalizedUsername = _userManager.Users.FirstOrDefault(user => user.Id == post.UserId)?.NormalizedUserName;
+            var userId = _userManager.Users.FirstOrDefault(user => user.Id == post.UserId)?.Id;
 
-            var postDTO = mapper.Map<PostDTO>(post);
+            var postDTO = new PostDTO(post.Id, post.Name, post.Body, post.CreationDate, normalizedUsername, userId);
+            if (user.NormalizedUserName == "ADMIN") return Ok(postDTO);
 
             return Ok(postDTO);
-
-            //return Ok(new { Resource = postDTO, Links = links });
-
         }
 
         // api/posts/
@@ -69,7 +77,7 @@ namespace VlogAPI.Controllers
         [Authorize(Roles = VlogRoles.VlogUser)]
         public async Task<ActionResult<PostDTO>> Create(CreatePostDTO createPostDTO)
         {
-            var post = new Post { Name = createPostDTO.name, Body = createPostDTO.body, CreationDate = DateTime.UtcNow, UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub)};
+            var post = new Post { Name = createPostDTO.Name, Body = createPostDTO.Body, CreationDate = DateTime.UtcNow, UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub)};
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, post, PolicyNames.ResourceOwner);
             if (!authorizationResult.Succeeded)
             {
@@ -78,8 +86,13 @@ namespace VlogAPI.Controllers
             }
             await postsRepository.CreateAsync(post);
 
+            var normalizedUsername = _userManager.Users.FirstOrDefault(user => user.Id == User.FindFirstValue(JwtRegisteredClaimNames.Sub))?.NormalizedUserName;
+            if (normalizedUsername == null) return NotFound();
+
+            var postDTO = new PostDTO(post.Id, post.Name, post.Body,  post.CreationDate, normalizedUsername, _userManager.Users.FirstOrDefault(user => user.Id == post.UserId)?.Id);
+
             // 201
-            return Created("$/api/posts/{post.Id}", mapper.Map<PostDTO>(post));
+            return Created("$/api/posts/{post.Id}", postDTO);
         }
 
         // api/posts/
@@ -88,23 +101,28 @@ namespace VlogAPI.Controllers
         public async Task<ActionResult<PostDTO>> Update(int postId, UpdatePostDTO updatePostDTO)
         {
             var post = await postsRepository.GetPostAsync(postId);
-
-            // 404
             if (post == null) return NotFound();
 
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, post, PolicyNames.ResourceOwner);
             if (!authorizationResult.Succeeded)
             {
-                // 404
                 return Forbid();
             }
 
-            //post.Body = updatePostDTO.body;
-            mapper.Map(updatePostDTO, post);
+            //var user = _userManager.Users.FirstOrDefault(user => user.Id == User.FindFirstValue(JwtRegisteredClaimNames.Sub));
+            //if (user.Id != post.UserId && user.NormalizedUserName != "ADMIN") return NotFound();
+
+            post.Name = updatePostDTO.Name;
+            post.Body = updatePostDTO.Body;
+            //mapper.Map(updatePostDTO, post);
 
             await postsRepository.UpdateAsync(post);
 
-            return Ok(mapper.Map<PostDTO>(post));
+            var normalizedUsername = _userManager.Users.FirstOrDefault(user => user.Id == post.UserId)?.NormalizedUserName;
+            var userId = _userManager.Users.FirstOrDefault(user => user.Id == post.UserId)?.Id;
+
+            PostDTO updatedPostDTO = new PostDTO(post.Id, updatePostDTO.Name, updatePostDTO.Body, post.CreationDate, normalizedUsername, userId);
+            return Ok(updatedPostDTO);
         }
 
         // api/posts/
@@ -113,16 +131,16 @@ namespace VlogAPI.Controllers
         public async Task<ActionResult> Remove(int postId)
         {
             var post = await postsRepository.GetPostAsync(postId);
-
-            // 404
             if (post == null) return NotFound();
 
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, post, PolicyNames.ResourceOwner);
             if (!authorizationResult.Succeeded)
             {
-                // 404
                 return Forbid();
             }
+
+            //var user = _userManager.Users.FirstOrDefault(user => user.Id == User.FindFirstValue(JwtRegisteredClaimNames.Sub));
+            //if (user.Id != tournament.UserId && user.NormalizedUserName != "ADMIN") return NotFound();
 
             await postsRepository.DeleteAsync(post);
 
@@ -130,31 +148,31 @@ namespace VlogAPI.Controllers
             return NoContent();
         }
 
-        [HttpGet("{postId}/likes")]
-        public async Task<ActionResult<IEnumerable<LikeDTO>>> GetPostLikes(int postId)
-        {
-            var post = await postsRepository.GetPostAsync(postId);
-            if (post == null) return NotFound();
+        //[HttpGet("{postId}/likes")]
+        //public async Task<ActionResult<IEnumerable<LikeDTO>>> GetPostLikes(int postId)
+        //{
+        //    var post = await postsRepository.GetPostAsync(postId);
+        //    if (post == null) return NotFound();
 
-            List<LikeDTO> postLikes = new List<LikeDTO>();
+        //    List<LikeDTO> postLikes = new List<LikeDTO>();
 
-            var comments = await commentsRepository.GetManyAsync(postId);
-            if (comments.Count == 0) return Ok(postLikes);
+        //    var comments = await commentsRepository.GetManyAsync(postId);
+        //    if (comments.Count == 0) return Ok(postLikes);
 
 
-            foreach (Comment comment in comments)
-            {
-                var likes = await likesRepository.GetManyAsync(postId, comment.Id);
-                if (likes.Count != 0)
-                {
-                    foreach (Like like in likes)
-                    {
-                        postLikes.Add(new LikeDTO(like.Id, like.IsPositive, like.CreationDate));
-                    }
-                }
-            }
-            return Ok(postLikes);
-        }
+        //    foreach (Comment comment in comments)
+        //    {
+        //        var likes = await likesRepository.GetManyAsync(postId, comment.Id);
+        //        if (likes.Count != 0)
+        //        {
+        //            foreach (Like like in likes)
+        //            {
+        //                postLikes.Add(new LikeDTO(like.Id, like.IsPositive, like.CreationDate));
+        //            }
+        //        }
+        //    }
+        //    return Ok(postLikes);
+        //}
 
         //private IEnumerable<LinkDTO> CreateLinksForPost(int postId)
         //{

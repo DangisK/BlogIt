@@ -4,9 +4,9 @@ namespace VlogAPI.Data.DTOs
 {
     public class CommentsDTO
     {
-        public record CreateCommentDTO([Required] string content);
+        public record CreateCommentDTO([Required] string Content);
 
-        public record UpdateCommentDTO([Required] string content);
-        public record CommentDTO(int id, string content, DateTime creationDate);
+        public record UpdateCommentDTO([Required] string Content);
+        public record CommentDTO(int Id, string Content, DateTime CreationDate, int PostId, string Username, string UserId);
     }
 }

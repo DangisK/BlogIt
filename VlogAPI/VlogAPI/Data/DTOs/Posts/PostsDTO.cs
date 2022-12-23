@@ -2,8 +2,10 @@
 
 namespace VlogAPI.Data.DTOs
 {
-    public record CreatePostDTO(string name, [Required] string body);
+    public record CreatePostDTO(string Name, [Required] string Body);
 
-    public record UpdatePostDTO([Required] string body);
-    public record PostDTO(int id, string name, string body, DateTime creationDate);
+    public record UpdatePostDTO(string Name, [Required] string Body);
+    public record PostDTO(int Id, string Name, string Body, DateTime CreationDate, string Username, string UserId);
+
+
 }

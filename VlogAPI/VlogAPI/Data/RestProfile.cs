@@ -10,7 +10,7 @@ namespace VlogAPI.Data
     {
         public RestProfile()
         {
-            CreateMap<Post, PostDTO>();
+            CreateMap<Post, PostDTO>().ForMember(dest => dest.Username, act => act.MapFrom(src => src.User.NormalizedUserName));
             CreateMap<CreatePostDTO, Post>();
             CreateMap<UpdatePostDTO, Post>();
 

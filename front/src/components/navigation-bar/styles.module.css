@@ -1,0 +1,144 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 0px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+header > a {
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 25px;
+  color: #121212;
+}
+
+.navbar ul {
+  list-style: none;
+}
+
+.navbar ul li {
+  position: relative;
+  float: left;
+}
+
+.navbar ul li a:hover {
+  background: #121212;
+  color: #fff;
+}
+
+.navbar ul li a {
+  font-size: 20px;
+  padding: 20px;
+  color: #121212;
+  display: block;
+  text-decoration: none;
+}
+
+.sublinks > li :hover {
+  background: #121212;
+  color: #fff;
+}
+
+.sublinks {
+  position: absolute;
+  left: 0;
+  width: 200px;
+  background: #fff;
+  display: none;
+}
+
+.sublinks li {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul li:hover > ul,
+.navbar ul li:focus-within > ul {
+  display: initial;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 20px;
+  }
+
+  .hamburger {
+    display: initial;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    /* display: none; */
+  }
+
+  .navbar ul li {
+    width: 100%;
+  }
+
+  .sublinks {
+    position: relative;
+    width: 100%;
+  }
+
+  .sublinks li {
+    background: #eee;
+    padding-left: 40px;
+  }
+
+  .sublinks li ul {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* .smallNavbar {
+  display: none;
+}
+
+.bigNavbar {
+  background-color: aqua;
+  padding: 20px;
+}
+
+.menuItems {
+  display: flex;
+  list-style: none;
+  font-size: 18px;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.menuItems :hover > .dropdown li {
+  display: block;
+  position: absolute;
+}
+
+.dropdown li {
+  display: none;
+} */
+
+/* @media screen and (max-width: 768px) {
+  .smallNavbar {
+    display: block;
+  }
+
+  .bigNavbar {
+    display: none;
+  }
+} */
