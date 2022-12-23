@@ -49,6 +49,6 @@ pilną funkcionalumą, reikėtų paskyrą susikurti. Tai suteiktų galimybę kur
 serveryje, o visos jos komponentės diegiamos tame pačiame serveryje. Aplikacija pasiekiama iš
 vartotojo įrenginio naudojant *HTTP* protokolą.
 
-![image](https://user-images.githubusercontent.com/62296041/209277517-1b4df79c-a197-4457-a1f3-512886c355df.png)
+![image](https://user-images.githubusercontent.com/62296041/209277563-b07c4e47-c73e-4101-8ef5-5d151f31d9f4.png)
 
 Likęs svetainės aprašymas patalpintas .pdf faile.
