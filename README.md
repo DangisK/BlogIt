@@ -45,9 +45,9 @@ pilną funkcionalumą, reikėtų paskyrą susikurti. Tai suteiktų galimybę kur
 - Kliento pusė (angl. *Front-End*) – naudojamas *React*;
 - Serverio pusė (angl. *Back-End*) – naudojamas *.NET Core*, duomenų bazė –
 *MySQL*.
-  Apačioje pateikta sistemos diegimo diagrama. Sistema bus patalpinta *Azure*
-serveryje, o visos jos komponentės diegiamos tame pačiame serveryje. Aplikacija pasiekiama iš
-vartotojo įrenginio naudojant *HTTP* protokolą.
+  Apačioje pateikta sistemos diegimo diagrama. Serverio pusė patalpinta *Azure*
+serveryje, o visos jos komponentės diegiamos tame pačiame serveryje. Kliento pusė patalpinta *Render* serveryje. Aplikacija pasiekiama iš
+vartotojo įrenginio naudojant *HTTPS* protokolą.
 
 ![image](https://user-images.githubusercontent.com/62296041/209277563-b07c4e47-c73e-4101-8ef5-5d151f31d9f4.png)
 
