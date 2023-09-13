@@ -2,7 +2,7 @@ Svetainė pasiekiama adresu:
 https://blogit-e6ho.onrender.com
 
 Gali tekti kiek palaukti, kol svetainę pajungs pirmą kartą, kadangi naudojami free hostingai.
-Galima kurtis naują paskyrą, arba prisijungti su sukurtu naudotoju: Username: Useris1 <br /> Password: Useris1! <br />
+Galima kurtis naują paskyrą, arba prisijungti su sukurtu naudotoju: <br /> Username: Useris1 <br /> Password: Useris1!
 
 # BlogIt
 Blogų kūrimo svetainė, skirta T120B165 Saityno taikomųjų programų projektavimo modulio laboratoriniams realizuoti. 
